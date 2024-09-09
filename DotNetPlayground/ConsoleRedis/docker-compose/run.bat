@@ -1,0 +1,1 @@
+docker-compose -f redis-sentinel.yml --env-file .env up
