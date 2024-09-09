@@ -33,8 +33,9 @@ while (input != "q")
     {
         db.StringSet("key", Guid.NewGuid().ToString());
     }
-    catch (Exception)
+    catch (RedisConnectionException ex)
     {
+        Console.WriteLine($"Error: {ex.Message}");
         continue;
     }
     
