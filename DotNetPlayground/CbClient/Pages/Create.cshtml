@@ -1,0 +1,36 @@
+﻿@page
+@model CbClient.Pages.CreateModel
+@{
+}
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>
+                ID
+            </th>
+            <th>
+                Expression
+            </th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var row in Model.Rules){
+            <tr>
+                <td>@row.Id</td>
+                <td>@row.Expression</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<form method="post">
+    <label asp-for="Form.Expression">
+
+    </label>
+
+    <input asp-for="Form.Expression" type="text" />
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
