@@ -17,7 +17,7 @@ public class CreateModel(CbProvider cb) : PageModel
 
     public void OnGet()
     {
-        var rulesCollection = Cb.Db.GetCollection("rules", "promotions");
+        var rulesCollection = Cb.Db.GetCollection("rule");
 
         using var query = QueryBuilder.Select(
             //SelectResult.All()
@@ -26,7 +26,14 @@ public class CreateModel(CbProvider cb) : PageModel
             )
             .From(DataSource.Collection(rulesCollection));
 
-        var data = query.Execute();
+        using var query1 = QueryBuilder.Select(
+            SelectResult.All()
+            )
+            .From(DataSource.Collection(rulesCollection));
+
+        var data1 = query1.Execute();
+
+        var data = query.Execute().ToList();
 
         foreach (var item in data)
         {
@@ -41,9 +48,9 @@ public class CreateModel(CbProvider cb) : PageModel
         }
     }
 
-    public void OnPost()
+    public IActionResult OnPost()
     {
-        var rulesCollection = Cb.Db.GetCollection("rules", "promotions");
+        var rulesCollection = Cb.Db.GetCollection("rule");
 
         using var mutableDoc = new MutableDocument(Guid.NewGuid().ToString());
 
@@ -51,7 +58,7 @@ public class CreateModel(CbProvider cb) : PageModel
 
         rulesCollection.Save(mutableDoc);
 
-        RedirectToPage();
+        return RedirectToPage();
     }
 }
 
