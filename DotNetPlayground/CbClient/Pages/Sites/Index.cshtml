@@ -1,0 +1,51 @@
+@page "{siteId}"
+@model IndexModel
+@{
+    ViewData["Title"] = $"Site - {Model.SiteId}";
+}
+
+<h2>F737</h2>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>
+                ID
+            </th>
+            <th>
+                Expression
+            </th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var row in Model.Rules){
+            <tr>
+                <td>@row.Id</td>
+                <td>@row.Expression</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<h2>F738</h2>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>
+                ID
+            </th>
+            <th>
+                Expression
+            </th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var row in Model.Rules1){
+            <tr>
+                <td>@row.Id</td>
+                <td>@row.Expression</td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -17,7 +17,7 @@ public class CreateModel(CbProvider cb) : PageModel
 
     public void OnGet()
     {
-        var rulesCollection = Cb.Db.GetCollection("rule");
+        var rulesCollection = Cb.Db.GetCollection("promo_rule");
 
         using var query = QueryBuilder.Select(
             //SelectResult.All()

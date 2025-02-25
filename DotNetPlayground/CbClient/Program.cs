@@ -6,10 +6,12 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 
 builder.Services.AddSingleton<CbProvider>();
+builder.Services.AddSingleton<CbProvider1>();
 
 var app = builder.Build();
 
 app.Services.GetRequiredService<CbProvider>();
+app.Services.GetRequiredService<CbProvider1>();
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

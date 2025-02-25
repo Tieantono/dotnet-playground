@@ -4,22 +4,22 @@ using System.Net;
 
 namespace CbClient.Services;
 
-public class CbProvider : IDisposable
+public class CbProvider1 : IDisposable
 {
     public Database Db { get; private set; }
 
     public Replicator Replicator { get; private set; }
 
-    public CbProvider()
+    public CbProvider1()
     {
         Db = new Database("fbi", new DatabaseConfiguration{
-            Directory = "./Data/F737"
+            Directory = "./Data/F738"
         });
 
         var rulesCollection = Db.GetCollection("promo_rule");
         rulesCollection ??= Db.CreateCollection("promo_rule");
 
-        var credential = new NetworkCredential("F737", "helloworld");
+        var credential = new NetworkCredential("F738", "helloworld");
 
         var replicatorConfig = new ReplicatorConfiguration(new URLEndpoint(new Uri("ws://localhost:4984/fbi")))
         {
